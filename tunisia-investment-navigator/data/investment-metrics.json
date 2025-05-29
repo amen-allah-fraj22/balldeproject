@@ -1,0 +1,85 @@
+{
+  "scoring_methodology": {
+    "weights": {
+      "labor_market": 0.25,
+      "infrastructure": 0.20,
+      "market_potential": 0.20,
+      "resource_availability": 0.15,
+      "business_environment": 0.10,
+      "strategic_position": 0.10
+    }
+  },
+  "governorate_scores": [
+    {
+      "governorate_id": 14,
+      "name": "Mahdia", 
+      "sectors": {
+        "agriculture": {
+          "total_score": 87,
+          "components": {
+            "labor_market": 78,
+            "infrastructure": 72,
+            "market_potential": 65,
+            "resource_availability": 95,
+            "business_environment": 81,
+            "strategic_position": 68
+          },
+          "strengths": ["Strong fishing industry", "Good olive production", "Developing irrigation"],
+          "challenges": ["Water scarcity in some areas", "Market access for smaller farms"],
+          "opportunities": ["Aquaculture development", "Organic farming initiatives", "Agri-tourism"]
+        },
+        "tourism": {
+          "total_score": 75,
+          "components": {
+            "labor_market": 70,
+            "infrastructure": 80,
+            "market_potential": 72,
+            "resource_availability": 65,
+            "business_environment": 78,
+            "strategic_position": 85
+          },
+          "strengths": ["Historical sites (El Jem)", "Coastal areas", "Cultural heritage"],
+          "challenges": ["Seasonality of tourism", "Infrastructure needs upgrades"],
+          "opportunities": ["Eco-tourism", "Cultural tourism expansion", "Improving hotel standards"]
+        }
+      }
+    },
+    {
+      "governorate_id": 9,
+      "name": "Jendouba",
+      "sectors": {
+        "agriculture": {
+          "total_score": 92,
+          "components": {
+            "labor_market": 82,
+            "infrastructure": 75,
+            "market_potential": 70,
+            "resource_availability": 98,
+            "business_environment": 85,
+            "strategic_position": 72
+          },
+          "strengths": ["Highest arable land percentage", "Strong water resources (dams)", "Established agricultural tech parks"],
+          "challenges": ["Limited urban infrastructure for processing", "Seasonal labor fluctuation", "Transportation links for export"],
+          "opportunities": ["Organic farming certification", "Expansion of food processing units", "Export market development for cereals and vegetables"]
+        },
+        "manufacturing": {
+          "total_score": 68,
+          "components": {
+            "labor_market": 72,
+            "infrastructure": 60,
+            "market_potential": 65,
+            "resource_availability": 70,
+            "business_environment": 67,
+            "strategic_position": 71
+          },
+          "strengths": ["Availability of raw agricultural products", "Low labor costs"],
+          "challenges": ["Lack of skilled labor for high-tech manufacturing", "Energy supply reliability", "Logistics infrastructure"],
+          "opportunities": ["Agro-food processing industries", "Small-scale manufacturing linked to local resources", "Incentives for industrial zone development"]
+        }
+      }
+    }
+    // NOTE: For a complete application, all 24 governorates and relevant sectors
+    // would need to be populated here with realistic scores and qualitative data.
+    // This is a representative sample.
+  ]
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tunisia Investment Navigator</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation Header -->
+        <header class="nav-header">
+            <div class="logo">Tunisia Investment Navigator</div>
+            <nav class="main-nav">
+                <button id="global-view" class="nav-btn active">Global Dashboard</button>
+                <button id="tunisia-focus" class="nav-btn">Tunisia Focus</button>
+                <button id="sector-analysis" class="nav-btn">Sector Analysis</button>
+            </nav>
+        </header>
+
+        <!-- Global Dashboard Section -->
+        <section id="global-dashboard" class="dashboard-section active">
+            <div class="dashboard-grid">
+                <div class="chart-container">
+                    <h3>Economic Indicators Comparison</h3>
+                    <canvas id="global-inflation-chart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Happiness vs GDP Correlation</h3>
+                    <canvas id="happiness-gdp-chart"></canvas>
+                </div>
+                <div class="metrics-panel">
+                    <h3>Tunisia Highlights</h3>
+                    <div id="tunisia-metrics"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tunisia Focus Section -->
+        <section id="tunisia-dashboard" class="dashboard-section">
+            <div class="tunisia-grid">
+                <div class="map-container">
+                    <h3>Tunisia Governorates</h3>
+                    <div id="tunisia-map"></div>
+                    <div class="map-legend">
+                        <div class="legend-item">
+                            <span class="color-high"></span> High Investment Score (80-100)
+                        </div>
+                        <div class="legend-item">
+                            <span class="color-medium"></span> Medium Investment Score (60-79)
+                        </div>
+                        <div class="legend-item">
+                            <span class="color-low"></span> Low Investment Score (0-59)
+                        </div>
+                    </div>
+                </div>
+                <div class="sector-selector">
+                    <h3>Select Investment Sector</h3>
+                    <div class="sector-buttons">
+                        <button id="agriculture-btn" class="sector-btn">
+                            🌾 Agriculture
+                        </button>
+                        <button id="tourism-btn" class="sector-btn">
+                            🏖️ Tourism
+                        </button>
+                        <button id="manufacturing-btn" class="sector-btn">
+                            🏭 Manufacturing
+                        </button>
+                    </div>
+                </div>
+                <div class="recommendations-panel">
+                    <h3>Investment Recommendations</h3>
+                    <div id="recommendations-content">
+                        <p>Select a sector to see recommendations</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Governorate Detail Modal -->
+        <div id="governorate-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="governorate-details"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="assets/js/data-manager.js"></script>
+    <script src="assets/js/charts.js"></script>
+    <script src="assets/js/map.js"></script>
+    <script src="assets/js/advisor.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
