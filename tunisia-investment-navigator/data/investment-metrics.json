@@ -78,8 +78,6 @@
         }
       }
     }
-    // NOTE: For a complete application, all 24 governorates and relevant sectors
-    // would need to be populated here with realistic scores and qualitative data.
-    // This is a representative sample.
+    
   ]
 }
