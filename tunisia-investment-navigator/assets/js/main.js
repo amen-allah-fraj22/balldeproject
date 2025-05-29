@@ -34,6 +34,7 @@ class TunisiaInvestmentNavigator {
         // Navigation buttons
         document.getElementById('global-view').addEventListener('click', () => this.showGlobalDashboard());
         document.getElementById('tunisia-focus').addEventListener('click', () => this.showTunisiaFocus());
+        document.getElementById('sector-analysis').addEventListener('click', () => this.showSectorAnalysis());
         
         // Sector buttons
         document.getElementById('agriculture-btn').addEventListener('click', () => this.selectSector('agriculture'));
@@ -87,8 +88,18 @@ class TunisiaInvestmentNavigator {
             document.getElementById('global-view').classList.add('active');
         } else if (sectionId === 'tunisia-dashboard') {
             document.getElementById('tunisia-focus').classList.add('active');
+        } else if (sectionId === 'sector-analysis-dashboard') { // Add this condition
+            document.getElementById('sector-analysis').classList.add('active');
         }
-        // Add handling for sector-analysis view if it gets its own section
+    }
+
+    showSectorAnalysis() {
+        this.currentView = 'sector'; // Or any appropriate view name
+        this.updateActiveSection('sector-analysis-dashboard');
+        // Placeholder for now:
+        console.log('Sector Analysis view activated');
+        // Later, you might want to render specific charts or data here
+        // For example: if (this.data) this.charts.renderSectorCharts();
     }
     
     displayTunisiaHighlights() {
