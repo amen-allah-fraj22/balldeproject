@@ -1,0 +1,13 @@
+{
+  "comment": "Placeholder for Tunisia governorates data, to be enhanced with ML scores.",
+  "governorates": [
+    {
+      "id": "TN-11",
+      "name": "Tunis",
+      "population": 1078434,
+      "area_km2": 346,
+      "ml_investment_score": null,
+      "economic_indicators": {}
+    }
+  ]
+}

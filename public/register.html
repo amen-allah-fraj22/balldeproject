@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Tunisia Investment Navigator</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/auth.css">
+</head>
+<body>
+    <!-- Navigation will be injected here by navigation.js -->
+    <div class="auth-container">
+        <h1>Register</h1>
+        <form id="register-form">
+            <div>
+                <label for="register-displayName">Display Name:</label>
+                <input type="text" id="register-displayName" required>
+            </div>
+            <div>
+                <label for="register-email">Email:</label>
+                <input type="email" id="register-email" required>
+            </div>
+            <div>
+                <label for="register-password">Password (min. 6 characters):</label>
+                <input type="password" id="register-password" required minlength="6">
+            </div>
+            <p id="register-error" style="color: red;"></p>
+            <button type="submit" id="register-button">Register</button>
+        </form>
+        <p>Already have an account? <a href="/login.html">Login here</a></p>
+    </div>
+
+    <script src="/firebase-config.js"></script>
+    <script type="module" src="/assets/js/auth.js"></script>
+    <script src="/assets/js/navigation.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const registerForm = document.getElementById('register-form');
+            const registerError = document.getElementById('register-error');
+
+            if (registerForm) {
+                registerForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    registerError.textContent = ''; // Clear previous errors
+                    const displayName = document.getElementById('register-displayName').value;
+                    const email = document.getElementById('register-email').value;
+                    const password = document.getElementById('register-password').value;
+
+                    if (!window.authManager) {
+                        registerError.textContent = 'Authentication service is not available. Please try again later.';
+                        return;
+                    }
+                    try {
+                        await window.authManager.register(email, password, displayName);
+                    } catch (error) {
+                        // Error is alerted by authManager, but if we want to display in #register-error:
+                        // registerError.textContent = error.message; // Uncomment if authManager stops alerting.
+                        console.error("Register form submission error:", error); // Keep console log for debugging
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

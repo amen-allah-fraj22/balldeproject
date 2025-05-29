@@ -1,0 +1,155 @@
+/* Global Styles for Tunisia Investment Navigator */
+
+/* Root variables for Color Palette & Typography */
+:root {
+    /* Tunisia Brand Colors */
+    --tunisia-red: #dc2626;
+    --tunisia-green: #16a34a;
+    --primary-blue: #1e40af;
+    --accent-gold: #f59e0b;
+
+    /* Professional Grays */
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-900: #111827;
+
+    /* Fonts */
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Inter', sans-serif;
+}
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@400;500;600&display=swap');
+
+/* Basic body styling */
+body {
+    font-family: var(--font-primary);
+    color: var(--gray-900);
+    background-color: var(--gray-50);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-secondary);
+    color: var(--primary-blue);
+}
+
+/* Fixed container dimensions */
+.dashboard-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: calc(100vh - 80px); /* Assuming 80px for a potential navbar/footer */
+}
+
+/* UI Stabilization: Chart and Map Fixes */
+.chart-container {
+    width: 100% !important;
+    height: 400px !important;
+    overflow: hidden;
+    position: relative;
+}
+
+.chart-container canvas {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: auto !important; /* Maintain aspect ratio */
+    height: auto !important; /* Maintain aspect ratio */
+    /* The following might be needed depending on the chart library,
+       to ensure canvas scales within the container.
+       If issues persist, we might need to adjust. */
+    display: block; /* Removes extra space below canvas */
+}
+
+#tunisia-map {
+    height: 500px !important;
+    width: 100% !important;
+    position: relative; /* Ensure z-index is effective if other elements overlap */
+    z-index: 1;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 768px) {
+    .chart-container {
+        height: 300px !important;
+    }
+
+    .tunisia-grid { /* Assuming this class will be used for grid layouts */
+        grid-template-columns: 1fr !important;
+    }
+
+    .dashboard-container {
+        padding: 1rem;
+    }
+}
+
+/* Navigation Styles */
+.main-navigation {
+    background-color: var(--primary-blue);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--gray-50);
+}
+
+.main-navigation a {
+    color: var(--gray-50);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+.main-navigation a:hover {
+    background-color: #2563eb; /* A slightly lighter blue */
+    border-radius: 4px;
+}
+
+.nav-brand a {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    margin-left: 1rem;
+}
+
+/* Basic Dropdown Styling (Hidden by default) */
+.dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: var(--gray-100);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 10;
+    padding: 0;
+    margin-top: 0.5rem; /* Spacing from the "Sectors" link */
+    border-radius: 4px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block; /* Show on hover */
+}
+
+.dropdown-menu li {
+    margin: 0;
+}
+
+.dropdown-menu li a {
+    color: var(--primary-blue);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    white-space: nowrap;
+}
+
+.dropdown-menu li a:hover {
+    background-color: var(--gray-200); /* Using a lighter gray from the palette */
+}

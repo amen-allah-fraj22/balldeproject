@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Tunisia Investment Navigator</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/auth.css">
+</head>
+<body>
+    <!-- Navigation will be injected here by navigation.js -->
+    <div class="auth-container">
+        <h1>Login</h1>
+        <p id="login-message" style="color: green;"></p> <!-- For messages like 'Please verify your email' -->
+        <form id="login-form">
+            <div>
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" required>
+            </div>
+            <div>
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" required>
+            </div>
+            <p id="login-error" style="color: red;"></p>
+            <button type="submit" id="login-button">Login</button>
+        </form>
+        <p><a href="#" id="forgot-password-link">Forgot Password?</a></p>
+        <p>Don't have an account? <a href="/register.html">Register here</a></p>
+    </div>
+
+    <script src="/firebase-config.js"></script>
+    <script type="module" src="/assets/js/auth.js"></script>
+    <script src="/assets/js/navigation.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('login-form');
+            const loginError = document.getElementById('login-error');
+            const loginMessage = document.getElementById('login-message');
+
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('message') && urlParams.get('message') === 'verify-email') {
+                loginMessage.textContent = 'Registration successful! Please check your email to verify your account before logging in.';
+            }
+             if (urlParams.has('message') && urlParams.get('message') === 'password-reset') { // Though auth.js handles this with an alert
+                loginMessage.textContent = 'Password reset email sent! Please check your inbox.';
+            }
+
+            if (loginForm) {
+                loginForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    loginError.textContent = ''; 
+                    loginMessage.textContent = ''; 
+                    const email = document.getElementById('login-email').value;
+                    const password = document.getElementById('login-password').value;
+
+                    if (!window.authManager) {
+                        loginError.textContent = 'Authentication service is not available. Please try again later.';
+                        return;
+                    }
+                    try {
+                        await window.authManager.login(email, password);
+                    } catch (error) {
+                        // Error is alerted by authManager, but if we want to display in #login-error:
+                        // loginError.textContent = error.message; // Uncomment if authManager stops alerting.
+                        console.error("Login form submission error:", error); // Keep console log for debugging
+                    }
+                });
+            }
+
+            const forgotPasswordLink = document.getElementById('forgot-password-link');
+            if (forgotPasswordLink) {
+                forgotPasswordLink.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    loginError.textContent = '';
+                    loginMessage.textContent = '';
+                    const email = prompt("Please enter your email address to reset your password:");
+                    if (email && window.authManager) {
+                        try {
+                            await window.authManager.resetPassword(email);
+                        } catch (error) {
+                            // loginError.textContent = error.message; // authManager already alerts
+                           console.error("Forgot password error:", error); // Keep console log
+                        }
+                    } else if (email) { // Only show error if email was provided but authManager missing
+                         loginError.textContent = 'Password reset service is not available.';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

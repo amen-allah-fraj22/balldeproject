@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Tunisia Investment Navigator</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/auth.css"> <!-- Can reuse some auth styles -->
+    <style>
+        /* Additional styles specific to profile page if needed */
+        .profile-container { max-width: 600px; }
+        #user-info p { margin: 0.5em 0; }
+        #user-info strong { color: var(--primary-blue); }
+        hr { border: 0; border-top: 1px solid var(--gray-200, #e5e7eb); }
+        #resend-verification-email { display: none; /* Hidden by default, shown if email not verified */ }
+    </style>
+</head>
+<body>
+    <!-- Navigation will be injected by navigation.js -->
+    <div class="auth-container profile-container"> 
+        <h1>User Profile</h1>
+        <div id="user-info">
+            <p><strong>Display Name:</strong> <span id="user-displayName">Loading...</span></p>
+            <p><strong>Email:</strong> <span id="user-email">Loading...</span></p>
+            <p><strong>Email Verified:</strong> <span id="user-emailVerified">Loading...</span></p>
+        </div>
+
+        <hr style="margin: 20px 0;">
+
+        <form id="update-profile-form">
+            <h2>Update Profile</h2>
+            <div>
+                <label for="profile-displayName">New Display Name:</label>
+                <input type="text" id="profile-displayName" required>
+            </div>
+            <p id="profile-message" style="color: var(--tunisia-green, #16a34a);"></p>
+            <p id="profile-error" style="color: var(--tunisia-red, #dc2626);"></p>
+            <button type="submit">Update Display Name</button>
+        </form>
+        
+        <hr style="margin: 20px 0;">
+        
+        <div>
+            <h2>Account Actions</h2>
+            <button id="resend-verification-email" style="background-color: var(--accent-gold); margin-top:10px;">Resend Verification Email</button>
+        </div>
+
+    </div>
+
+    <script src="/firebase-config.js"></script>
+    <script type="module" src="/assets/js/auth.js"></script>
+    <script src="/assets/js/navigation.js" defer></script>
+
+    <script type="module">
+        document.addEventListener('DOMContentLoaded', () => {
+            const userDisplayNameSpan = document.getElementById('user-displayName');
+            const userEmailSpan = document.getElementById('user-email');
+            const userEmailVerifiedSpan = document.getElementById('user-emailVerified');
+            
+            const updateProfileForm = document.getElementById('update-profile-form');
+            const newDisplayNameInput = document.getElementById('profile-displayName');
+            const profileMessage = document.getElementById('profile-message');
+            const profileError = document.getElementById('profile-error');
+            const resendVerificationButton = document.getElementById('resend-verification-email');
+
+            function displayUserData(user) {
+                if (user) {
+                    userDisplayNameSpan.textContent = user.displayName || 'Not set';
+                    userEmailSpan.textContent = user.email;
+                    userEmailVerifiedSpan.textContent = user.emailVerified ? 'Yes' : 'No';
+                    newDisplayNameInput.value = user.displayName || '';
+                    
+                    if (!user.emailVerified) {
+                        resendVerificationButton.style.display = 'block';
+                    } else {
+                        resendVerificationButton.style.display = 'none';
+                    }
+                } else {
+                    userDisplayNameSpan.textContent = 'N/A';
+                    userEmailSpan.textContent = 'N/A';
+                    userEmailVerifiedSpan.textContent = 'N/A';
+                    resendVerificationButton.style.display = 'none';
+                    // Redirection should be handled by auth.js onAuthStateChanged
+                }
+            }
+            
+            function handleAuthAvailable() {
+                const initialUser = window.authManager.getCurrentUser();
+                if (!initialUser && !window.location.pathname.endsWith('login.html')) { 
+                    // This is an additional check. auth.js should handle redirection.
+                    // If on profile page and no user, auth.js will redirect.
+                    // console.log("Profile page: No initial user, auth.js should redirect soon.");
+                }
+                displayUserData(initialUser);
+
+                // Listen to the custom event dispatched by AuthManager for real-time updates
+                document.addEventListener('authStateChanged', (event) => {
+                    console.log("Profile page: authStateChanged event received", event.detail);
+                    displayUserData(event.detail.user);
+                });
+                document.addEventListener('userProfileUpdated', (event) => {
+                    console.log("Profile page: userProfileUpdated event received", event.detail);
+                    displayUserData(event.detail); // event.detail is the updated user object
+                });
+            }
+
+            // Wait for authManager to be initialized
+            if (window.authManager) {
+                handleAuthAvailable();
+            } else {
+                // If auth.js loads later than this inline script (unlikely with type=module for auth.js)
+                // Or if authManager fails to initialize.
+                let attempts = 0;
+                const intervalId = setInterval(() => {
+                    attempts++;
+                    if (window.authManager) {
+                        clearInterval(intervalId);
+                        handleAuthAvailable();
+                    } else if (attempts > 10) { // After 1 second (10 * 100ms)
+                        clearInterval(intervalId);
+                        console.error("AuthManager did not become available on profile page.");
+                        profileError.textContent = "Authentication service failed to load. Please refresh.";
+                        // Potentially hide sensitive parts of the page or show a global error
+                    }
+                }, 100);
+            }
+
+            if (updateProfileForm) {
+                updateProfileForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    profileMessage.textContent = '';
+                    profileError.textContent = '';
+                    const newDisplayName = newDisplayNameInput.value.trim();
+
+                    if (!newDisplayName) {
+                        profileError.textContent = 'Display name cannot be empty.';
+                        return;
+                    }
+
+                    if (window.authManager && window.authManager.isUserLoggedIn()) {
+                        try {
+                            await window.authManager.updateProfile({ displayName: newDisplayName });
+                            profileMessage.textContent = 'Display name updated successfully!';
+                            // User data on page will be updated via 'userProfileUpdated' event if authManager dispatches it,
+                            // or by 'authStateChanged' if that also reflects profile updates.
+                            // For immediate feedback:
+                            // userDisplayNameSpan.textContent = newDisplayName; // Already handled by event or displayUserData
+                        } catch (error) {
+                            // Error already alerted by authManager, but can log or display more specific UI here
+                            console.error("Error updating profile from form:", error);
+                            profileError.textContent = `Update failed: ${error.message}`; // Display in page as well
+                        }
+                    } else {
+                        profileError.textContent = 'You must be logged in to update your profile.';
+                        // Consider redirecting if somehow user gets here without being logged in
+                        // window.location.href = '/login.html?redirect=profile';
+                    }
+                });
+            }
+            
+            if (resendVerificationButton) {
+                resendVerificationButton.addEventListener('click', async () => {
+                    profileMessage.textContent = '';
+                    profileError.textContent = '';
+                    if (window.authManager && window.authManager.isUserLoggedIn() && !window.authManager.isUserEmailVerified()) {
+                        try {
+                            await window.authManager.sendCurrentUserEmailVerification();
+                            // Alert is handled by authManager
+                            // profileMessage.textContent = 'Verification email sent. Please check your inbox.';
+                        } catch (error) {
+                            // Alert is handled by authManager
+                            profileError.textContent = `Error: ${error.message}`; // Display in page as well
+                        }
+                    } else if (window.authManager && window.authManager.isUserEmailVerified()) {
+                         profileMessage.textContent = 'Your email is already verified.';
+                         resendVerificationButton.style.display = 'none';
+                    } else {
+                        profileError.textContent = 'You must be logged in to perform this action.';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
