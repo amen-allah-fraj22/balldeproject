@@ -1,0 +1,436 @@
+{
+  "governorates": [
+    {
+      "id": 1,
+      "name": "Tunis",
+      "name_ar": "تونس",
+      "region": "Greater Tunis",
+      "population": 1056247,
+      "area_km2": 346,
+      "capital": "Tunis",
+      "coordinates": [
+        36.8065,
+        10.1815
+      ],
+      "coastalAccess": true,
+      "unemployment_rate": 11.5,
+      "youth_unemployment": null,
+      "population_density": 3053,
+      "urban_percentage": 99.8
+    },
+    {
+      "id": 2,
+      "name": "Ariana",
+      "name_ar": "أريانة",
+      "region": "Greater Tunis",
+      "population": 576088,
+      "area_km2": 482,
+      "capital": "Ariana",
+      "coordinates": [
+        36.8663,
+        10.1647
+      ],
+      "coastalAccess": true,
+      "unemployment_rate": 11.6,
+      "youth_unemployment": null,
+      "population_density": 1195,
+      "urban_percentage": 75.7
+    },
+    {
+      "id": 3,
+      "name": "Ben Arous",
+      "name_ar": "بن عروس",
+      "region": "Greater Tunis",
+      "population": 631842,
+      "area_km2": 761,
+      "capital": "Ben Arous",
+      "coordinates": [
+        36.747,
+        10.2272
+      ],
+      "coastalAccess": true,
+      "unemployment_rate": 14.5,
+      "youth_unemployment": null,
+      "population_density": 830,
+      "urban_percentage": 83.7
+    },
+    {
+      "id": 4,
+      "name": "Manouba",
+      "name_ar": "منوبة",
+      "region": "Greater Tunis",
+      "population": 379518,
+      "area_km2": 1137,
+      "capital": "Manouba",
+      "coordinates": [
+        36.8081,
+        10.0969
+      ],
+      "coastalAccess": false,
+      "unemployment_rate": 16.1,
+      "youth_unemployment": null,
+      "population_density": 334,
+      "urban_percentage": 74.7
+    },
+    {
+      "id": 5,
+      "name": "Nabeul",
+      "name_ar": "نابل",
+      "region": "North-East",
+      "population": 787920,
+      "area_km2": 2788,
+      "capital": "Nabeul",
+      "coordinates": [
+        36.456,
+        10.7376
+      ],
+      "coastalAccess": true,
+      "unemployment_rate": 11.3,
+      "youth_unemployment": null,
+      "population_density": 283,
+      "urban_percentage": 70.4
+    },
+    {
+      "id": 6,
+      "name": "Zaghouan",
+      "name_ar": "زغوان",
+      "region": "North-East",
+      "population": 176945,
+      "area_km2": 2768,
+      "capital": "Zaghouan",
+      "coordinates": [
+        36.4022,
+        10.1426
+      ],
+      "coastalAccess": false,
+      "unemployment_rate": 13,
+      "youth_unemployment": null,
+      "population_density": 64,
+      "urban_percentage": 52.9
+    },
+    {
+      "id": 7,
+      "name": "Bizerte",
+      "name_ar": "بنزرت",
+      "region": "North-West",
+      "population": 568219,
+      "area_km2": 3685,
+      "capital": "Bizerte",
+      "coordinates": [
+        37.2746,
+        9.8739
+      ],
+      "coastalAccess": true,
+      "unemployment_rate": 11.8,
+      "youth_unemployment": null,
+      "population_density": 154,
+      "urban_percentage": 48.4
+    },
+    {
+      "id": 8,
+      "name": "Béja",
+      "name_ar": "باجة",
+      "region": "North-West",
+      "population": 303032,
+      "area_km2": 3740,
+      "capital": "Béja",
+      "coordinates": [
+        36.7256,
+        9.1816
+      ],
+      "coastalAccess": false,
+      "unemployment_rate": 18,
+      "youth_unemployment": null,
+      "population_density": 81,
+      "urban_percentage": 47.5
+    },
+    {
+      "id": 9,
+      "name": "Jendouba",
+      "name_ar": "جندوبة",
+      "region": "North-West",
+      "population": 401477,
+      "area_km2": 3102,
+      "capital": "Jendouba",
+      "coordinates": [
+        36.5011,
+        8.7803
+      ],
+      "coastalAccess": false,
+      "unemployment_rate": 20.2,
+      "youth_unemployment": null,
+      "population_density": 129,
+      "urban_percentage": 46.7
+    },
+    {
+      "id": 10,
+      "name": "Kef",
+      "name_ar": "الكاف",
+      "region": "North-West",
+      "population": 243156,
+      "area_km2": 4965,
+      "capital": "El Kef",
+      "coordinates": [
+        36.1699,
+        8.704
+      ],
+      "coastalAccess": false,
+      "unemployment_rate": 20.7,
+      "youth_unemployment": null,
+      "population_density": 49,
+      "urban_percentage": 45.2
+    },
+    {
+      "id": 11,
+      "name": "Siliana",
+      "name_ar": "سليانة",
+      "region": "North-West",
+      "population": 223087,
+      "area_km2": 4631,
+      "capital": "Siliana",
+      "coordinates": [
+        36.0836,
+        9.3708
+      ],
+      "coastalAccess": false,
+      "unemployment_rate": 23.2,
+      "youth_unemployment": null,
+      "population_density": 48,
+      "urban_percentage": 36
+    },
+    {
+      "id": 12,
+      "name": "Sousse",
+      "name_ar": "سوسة",
+      "region": "Center-East",
+      "population": 674971,
+      "area_km2": 2669,
+      "capital": "Sousse",
+      "coordinates": [
+        35.8256,
+        10.6369
+      ],
+      "coastalAccess": true,
+      "unemployment_rate": 13.2,
+      "youth_unemployment": null,
+      "population_density": 253,
+      "urban_percentage": 79.8
+    },
+    {
+      "id": 13,
+      "name": "Monastir",
+      "name_ar": "المنستير",
+      "region": "Center-East",
+      "population": 548828,
+      "area_km2": 1019,
+      "capital": "Monastir",
+      "coordinates": [
+        35.7643,
+        10.8113
+      ],
+      "coastalAccess": true,
+      "unemployment_rate": 12.4,
+      "youth_unemployment": null,
+      "population_density": 539,
+      "urban_percentage": 72.3
+    },
+    {
+      "id": 14,
+      "name": "Mahdia",
+      "name_ar": "المهدية",
+      "region": "Center-East",
+      "population": 410812,
+      "area_km2": 2966,
+      "capital": "Mahdia",
+      "coordinates": [
+        35.5047,
+        11.0622
+      ],
+      "coastalAccess": true,
+      "unemployment_rate": 13.9,
+      "youth_unemployment": null,
+      "population_density": 139,
+      "urban_percentage": 74.2
+    },
+    {
+      "id": 15,
+      "name": "Sfax",
+      "name_ar": "صفاقس",
+      "region": "Center-East",
+      "population": 1023566,
+      "area_km2": 7545,
+      "capital": "Sfax",
+      "coordinates": [
+        34.7406,
+        10.7603
+      ],
+      "coastalAccess": true,
+      "unemployment_rate": 13,
+      "youth_unemployment": null,
+      "population_density": 136,
+      "urban_percentage": 74
+    },
+    {
+      "id": 16,
+      "name": "Kairouan",
+      "name_ar": "القيروان",
+      "region": "Center-West",
+      "population": 570559,
+      "area_km2": 6712,
+      "capital": "Kairouan",
+      "coordinates": [
+        35.6781,
+        10.0963
+      ],
+      "coastalAccess": false,
+      "unemployment_rate": 18.5,
+      "youth_unemployment": null,
+      "population_density": 85,
+      "urban_percentage": 42.3
+    },
+    {
+      "id": 17,
+      "name": "Kasserine",
+      "name_ar": "القصرين",
+      "region": "Center-West",
+      "population": 439243,
+      "area_km2": 8260,
+      "capital": "Kasserine",
+      "coordinates": [
+        35.1674,
+        8.8363
+      ],
+      "coastalAccess": false,
+      "unemployment_rate": 22.3,
+      "youth_unemployment": null,
+      "population_density": 53,
+      "urban_percentage": 36.5
+    },
+    {
+      "id": 18,
+      "name": "Sidi Bouzid",
+      "name_ar": "سيدي بوزيد",
+      "region": "Center-West",
+      "population": 429912,
+      "area_km2": 7405,
+      "capital": "Sidi Bouzid",
+      "coordinates": [
+        35.0378,
+        9.4844
+      ],
+      "coastalAccess": false,
+      "unemployment_rate": 21.8,
+      "youth_unemployment": null,
+      "population_density": 58,
+      "urban_percentage": 41.9
+    },
+    {
+      "id": 19,
+      "name": "Gabès",
+      "name_ar": "قابس",
+      "region": "South-East",
+      "population": 374300,
+      "area_km2": 7166,
+      "capital": "Gabès",
+      "coordinates": [
+        33.8815,
+        10.0982
+      ],
+      "coastalAccess": true,
+      "unemployment_rate": 13.1,
+      "youth_unemployment": null,
+      "population_density": 52,
+      "urban_percentage": 78.8
+    },
+    {
+      "id": 20,
+      "name": "Médenine",
+      "name_ar": "مدنين",
+      "region": "South-East",
+      "population": 479520,
+      "area_km2": 8588,
+      "capital": "Médenine",
+      "coordinates": [
+        33.3548,
+        10.5051
+      ],
+      "coastalAccess": true,
+      "unemployment_rate": 14.6,
+      "youth_unemployment": null,
+      "population_density": 56,
+      "urban_percentage": 67
+    },
+    {
+      "id": 21,
+      "name": "Tataouine",
+      "name_ar": "تطاوين",
+      "region": "South-East",
+      "population": 149453,
+      "area_km2": 38889,
+      "capital": "Tataouine",
+      "coordinates": [
+        32.9299,
+        10.4518
+      ],
+      "coastalAccess": false,
+      "unemployment_rate": 16.1,
+      "youth_unemployment": null,
+      "population_density": 4,
+      "urban_percentage": 60.6
+    },
+    {
+      "id": 22,
+      "name": "Gafsa",
+      "name_ar": "قفصة",
+      "region": "South-West",
+      "population": 337331,
+      "area_km2": 8990,
+      "capital": "Gafsa",
+      "coordinates": [
+        34.425,
+        8.7842
+      ],
+      "coastalAccess": false,
+      "unemployment_rate": 20.4,
+      "youth_unemployment": null,
+      "population_density": 38,
+      "urban_percentage": 38.9
+    },
+    {
+      "id": 23,
+      "name": "Tozeur",
+      "name_ar": "توزر",
+      "region": "South-West",
+      "population": 107912,
+      "area_km2": 5593,
+      "capital": "Tozeur",
+      "coordinates": [
+        33.9197,
+        8.1347
+      ],
+      "coastalAccess": false,
+      "unemployment_rate": 21.6,
+      "youth_unemployment": null,
+      "population_density": 19,
+      "urban_percentage": 50.5
+    },
+    {
+      "id": 24,
+      "name": "Kebili",
+      "name_ar": "قبلي",
+      "region": "South-West",
+      "population": 156961,
+      "area_km2": 22454,
+      "capital": "Kebili",
+      "coordinates": [
+        33.7047,
+        8.9694
+      ],
+      "coastalAccess": false,
+      "unemployment_rate": 23,
+      "youth_unemployment": null,
+      "population_density": 7,
+      "urban_percentage": 37
+    }
+  ]
+}
